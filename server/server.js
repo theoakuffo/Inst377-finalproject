@@ -10,8 +10,8 @@ app.get('/api/spotify/search', async (req, res) => {
   });
   
 app.use(cors());
-app.use(express.json()); // for parsing JSON bodies
+app.use(express.json()); 
 app.use('/api', apiRoutes);
 
 const PORT = 3001;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

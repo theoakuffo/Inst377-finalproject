@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Recommender</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- JS Library 1 -->
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script> <!-- JS Library 2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
+  <!-- Glider CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
+
+<!-- Glider JS -->
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Music App</h2>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="playlist.html">Playlist</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Our Personal Suggestions</h1>
+<div id="suggestions" class="scroll-section"></div>
+
+<h2>Trending Songs</h2>
+<div id="trending" class="scroll-section"></div>
+
+      <div class="glider">
+        <!-- Slides go here -->
+      </div>
+
+      <h2>Popular Artists</h2>
+      <div class="artist-row" id="artists"></div>
+      <canvas id="genreChart" style="margin-top: 40px; max-height: 300px;"></canvas>
+    </main>
+  </div>
+
+ 
+  
+
+  <script src="script.js"></script>
+</body>
+</html>

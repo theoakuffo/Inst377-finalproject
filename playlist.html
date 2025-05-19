@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playlist</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="playlist.html">Playlist</a></li>
+      <li><a href="help.html">Help</a></li>
+    </ul>
+    
+
+  </nav>
+  <main>
+    <h2>Your Playlist</h2>
+    <p>This page allows you to store your saved songs into a playlist!</p>
+    <h2>My Songs</h2>
+    <div id="playlist" class="scroll-section"></div>
+    
+    <button id="savePlaylistBtn">Save Example Playlist</button>
+    
+  </main>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const mySongs = JSON.parse(localStorage.getItem('mySongs')) || [];
+      const playlistDiv = document.getElementById('playlist');
+  
+      mySongs.forEach(track => {
+        const div = document.createElement('div');
+        div.className = 'song-card';
+        div.innerHTML = `
+          <img src="${track.album_art_url}" alt="${track.title}" />
+          <p><strong>${track.title}</strong></p>
+          <p>${track.artist}</p>
+        `;
+        playlistDiv.appendChild(div);
+      });
+  
+      const saveBtn = document.getElementById('savePlaylistBtn');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          fetch('http://localhost:3001/api/save-playlist', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: "My Chill Mix",
+              user_id: "user123",
+              tracks: mySongs
+            })
+          })
+          .then(res => res.json())
+          .then(data => {
+            alert('Playlist saved to database!');
+            console.log('Saved playlist:', data);
+          })
+          .catch(err => console.error('Save error:', err));
+        });
+      }
+    });
+  </script>
+  
+</body>
+</html>
